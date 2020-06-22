@@ -7,4 +7,4 @@ Pillow
 https://github.com/pyrogram/pyrogram/archive/asyncio.zip
 requests
 tgcrypto
-youtube-dl
+git+https://github.com/FaArIsH/youtube-dl
