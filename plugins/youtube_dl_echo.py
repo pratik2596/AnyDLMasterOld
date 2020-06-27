@@ -115,6 +115,9 @@ async def echo(bot, update):
     if "hotstar" in url:
         command_to_exec.append("--geo-bypass-country")
         command_to_exec.append("IN")
+    if "sonyliv" in url:
+        command_to_exec.append("--geo-bypass-country")
+        command_to_exec.append("IN")
     # logger.info(command_to_exec)
     process = await asyncio.create_subprocess_exec(
         *command_to_exec,
