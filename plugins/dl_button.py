@@ -13,6 +13,7 @@ import aiohttp
 import json
 import math
 import os
+import random
 import shutil
 import time
 from datetime import datetime
@@ -31,6 +32,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
+from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
@@ -162,7 +164,14 @@ async def ddl_call_back(bot, update):
                 img.save(thumb_image_path, "JPEG")
                 # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
             else:
-                thumb_image_path = None
+                thumb_image_path = await take_screen_shot(
+                    download_directory,
+                    os.path.dirname(download_directory),
+                    random.randint(
+                        0,
+                        duration - 1
+                    )
+                )
             start_time = time.time()
             # try to upload file
             if tg_send_type == "audio":
