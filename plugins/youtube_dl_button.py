@@ -153,6 +153,9 @@ async def youtube_dl_call_back(bot, update):
     if "hotstar" in youtube_dl_url:
         command_to_exec.append("--geo-bypass-country")
         command_to_exec.append("IN")
+    if "sonyliv" in youtube_dl_url:
+        command_to_exec.append("--geo-bypass-country")
+        command_to_exec.append("IN")
     logger.info(command_to_exec)
     start = datetime.now()
     process = await asyncio.create_subprocess_exec(
