@@ -167,10 +167,7 @@ async def ddl_call_back(bot, update):
                 thumb_image_path = await take_screen_shot(
                     download_directory,
                     os.path.dirname(download_directory),
-                    random.randint(
-                        0,
-                        duration - 1
-                    )
+                    (duration / 2)
                 )
             start_time = time.time()
             # try to upload file
